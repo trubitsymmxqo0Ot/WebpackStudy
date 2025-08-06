@@ -2,7 +2,7 @@ import path from "path";
 import webpack from "webpack";
 import HTMLWebpackPlugin from "html-webpack-plugin";
 import { type Configuration as DevServerConfiguration } from "webpack-dev-server";
-
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
 type Mode = "production" | "development";
 type EnvMode = {
   mode: Mode;
@@ -26,6 +26,14 @@ module.exports = (env: EnvMode) => {
           use: "ts-loader", //*Используем в качетсве обработчика
           exclude: /node_modules/, //*Это мы не обрабатываем
         },
+        {
+          test: /\.s[ac]ss$/i,
+          use: [
+            isDev ? "style-loader" : MiniCssExtractPlugin.loader,
+            "css-loader",
+            "sass-loader",
+          ],
+        },
       ],
     },
     resolve: {
@@ -39,6 +47,11 @@ module.exports = (env: EnvMode) => {
       isDev &&
         new webpack.ProgressPlugin({
           activeModules: true,
+        }),
+      !isDev &&
+        new MiniCssExtractPlugin({
+          filename: "css/[name].[contenthash].css",
+          chunkFilename: "css/[name].[contenthash].css",
         }),
     ].filter(Boolean),
     devtool: isDev && "inline-source-map",

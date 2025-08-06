@@ -1,0 +1,25 @@
+.wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.title {
+  font-size: 38px;
+  text-align: center;
+  margin: 0 0 65px 0;
+}
+.count {
+  cursor: pointer;
+  font-size: 22px;
+  display: block;
+  width: 250px;
+  margin: 0 auto;
+  padding: 15px 0;
+  border-radius: 35px;
+  &:active {
+    color: red;
+  }
+}
