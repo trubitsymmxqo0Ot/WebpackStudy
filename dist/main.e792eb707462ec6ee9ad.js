@@ -1,1 +1,0 @@
-(()=>{console.log("hello world"),console.log(5);for(let o=0;o<=10;o++)console.log(o)})();
