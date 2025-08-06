@@ -1,13 +1,16 @@
 import path from "path";
 import webpack from "webpack";
 import HTMLWebpackPlugin from "html-webpack-plugin";
+import { type Configuration as DevServerConfiguration } from "webpack-dev-server";
 
 type Mode = "production" | "development";
 type EnvMode = {
   mode: Mode;
+  port: number;
 };
 
 module.exports = (env: EnvMode) => {
+  const isDev = env.mode === "development";
   const config: webpack.Configuration = {
     mode: env.mode ?? "development",
     entry: path.resolve(__dirname, "src", "index.ts"),
@@ -33,10 +36,18 @@ module.exports = (env: EnvMode) => {
         template: path.resolve(__dirname, "public", "index.html"),
       }),
       //?Замедляет сборку, в проде не используем
-      new webpack.ProgressPlugin({
-        activeModules: true,
-      }),
-    ],
+      isDev &&
+        new webpack.ProgressPlugin({
+          activeModules: true,
+        }),
+    ].filter(Boolean),
+    devtool: isDev && "inline-source-map",
+    devServer: isDev
+      ? {
+          open: true,
+          port: env.port ?? 3000,
+        }
+      : undefined,
   };
   return config;
 };
