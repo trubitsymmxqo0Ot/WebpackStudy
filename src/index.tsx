@@ -1,11 +1,11 @@
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Loading from "./components/loading/Loading";
-import App from "./components/App";
+import Loading from "@/components/loading/Loading";
+import App from "@/App";
 import { Suspense } from "react";
-import "./index.scss";
-import { Admin } from "./components/admin/index";
-import { Shop } from "./components/shop/index";
+import "@/index.scss";
+import { Admin } from "@/components/admin/index";
+import { Shop } from "@/components/shop/index";
 const root = document.getElementById("root");
 
 if (!root) console.error("root is not found");
