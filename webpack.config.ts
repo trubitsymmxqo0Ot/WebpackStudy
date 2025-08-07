@@ -13,6 +13,7 @@ module.exports = (env: EnvMode) => {
     port: env.port ?? 3000,
     mode: env.mode ?? "development",
     paths,
+    analyzer: env.analyzer,
   });
   return config;
 };

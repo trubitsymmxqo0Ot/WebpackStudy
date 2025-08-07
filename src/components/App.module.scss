@@ -23,3 +23,25 @@
     color: red;
   }
 }
+
+.links {
+  border: 1px solid #fff;
+  padding: 35px 5px;
+  margin: 0 0 15px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  border-radius: 35px;
+}
+.link {
+  color: #000;
+  background-color: #fff;
+  font-size: 18px;
+  display: block;
+  padding: 10px 15px;
+  border-radius: 10px;
+  &:hover {
+    color: blue;
+  }
+}

@@ -10,4 +10,5 @@ export type EnvMode = {
   paths: CustomPath;
   mode: Mode;
   port: number;
+  analyzer: boolean;
 };

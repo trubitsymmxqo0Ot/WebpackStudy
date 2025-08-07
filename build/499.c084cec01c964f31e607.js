@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkfirst_try=self.webpackChunkfirst_try||[]).push([[499],{499:(s,e,r)=>{r.r(e),r.d(e,{default:()=>f});var a=r(848),c=r(920),i="wLAMHryU",t="NfOX5Tfi",l="xGZNCCTQ";function f(){return(0,a.jsxs)("div",{className:l,children:[(0,a.jsx)("div",{className:t,children:"Shop"}),(0,a.jsx)(c.N_,{to:"/",className:i,children:"Back"})]})}}}]);
