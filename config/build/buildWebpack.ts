@@ -1,11 +1,11 @@
 import webpack from "webpack";
 import { type Configuration as DevServerConfiguration } from "webpack-dev-server";
-import { buildDevServer } from "./build/buildDevserver";
-import { buildOutput } from "./build/buildOutput";
-import { buildRules } from "./build/buildRules";
-import { buildPlugins } from "./build/buildPlugins";
+import { EnvMode } from "./types/types";
+import { buildOutput } from "./buildOutput";
+import { buildRules } from "./buildRules";
 import { buildResolve } from "./buildResolve";
-import { EnvMode } from "./build/types/types";
+import { buildPlugins } from "./buildPlugins";
+import { buildDevServer } from "./buildDevserver";
 
 export function buildWebpack(options: EnvMode): webpack.Configuration {
   const { mode, port, paths } = options;

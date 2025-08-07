@@ -9,11 +9,19 @@ export function buildRules({ mode }: EnvMode): ModuleOptions["rules"] {
     use: "ts-loader", //*Используем в качетсве обработчика
     exclude: /node_modules/, //*Это мы не обрабатываем
   };
+  const modulesLoader = {
+    loader: "css-loader",
+    options: {
+      modules: {
+        localIdentName: isDev ? "[path][name]__[local]" : "[hash:base64:8]",
+      },
+    },
+  };
   const cssLoader = {
     test: /\.s[ac]ss$/i,
     use: [
       isDev ? "style-loader" : MiniCssExtractPlugin.loader,
-      "css-loader",
+      modulesLoader,
       "sass-loader",
     ],
   };

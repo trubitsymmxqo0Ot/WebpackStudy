@@ -1,7 +1,7 @@
 import path from "path";
 import { CustomPath, EnvMode } from "./config/build/types/types";
 import webpack from "webpack";
-import { buildWebpack } from "./config/buildWebpack";
+import { buildWebpack } from "./config/build/buildWebpack";
 
 module.exports = (env: EnvMode) => {
   const paths: CustomPath = {
