@@ -9,6 +9,7 @@ export function buildRules({ mode }: EnvMode): ModuleOptions["rules"] {
     use: "ts-loader", //*Используем в качетсве обработчика
     exclude: /node_modules/, //*Это мы не обрабатываем
   };
+
   const modulesLoader = {
     loader: "css-loader",
     options: {
@@ -16,6 +17,32 @@ export function buildRules({ mode }: EnvMode): ModuleOptions["rules"] {
         localIdentName: isDev ? "[path][name]__[local]" : "[hash:base64:8]",
       },
     },
+  };
+
+  const imageLoader = {
+    test: /\.(png|jpg|jpeg|gif)$/i,
+    type: "asset/resource",
+  };
+  const svgrLoader = {
+    test: /\.svg$/i,
+    use: [
+      {
+        loader: "@svgr/webpack",
+        options: {
+          icon: true,
+          svgoConfig: {
+            plugins: [
+              {
+                name: "convertColors",
+                params: {
+                  currentColor: true,
+                },
+              },
+            ],
+          },
+        },
+      },
+    ],
   };
   const cssLoader = {
     test: /\.s[ac]ss$/i,
@@ -25,5 +52,5 @@ export function buildRules({ mode }: EnvMode): ModuleOptions["rules"] {
       "sass-loader",
     ],
   };
-  return [tsxLoader, cssLoader];
+  return [tsxLoader, cssLoader, imageLoader, svgrLoader];
 }
