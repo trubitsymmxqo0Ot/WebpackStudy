@@ -15,6 +15,7 @@ module.exports = (env: EnvMode) => {
     mode: env.mode ?? "development",
     paths,
     analyzer: env.analyzer,
+    platform: env.platform ?? "desktop",
   });
   return config;
 };

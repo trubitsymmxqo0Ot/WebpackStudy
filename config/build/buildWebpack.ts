@@ -8,7 +8,7 @@ import { buildPlugins } from "./buildPlugins";
 import { buildDevServer } from "./buildDevserver";
 
 export function buildWebpack(options: EnvMode): webpack.Configuration {
-  const { mode, port, paths } = options;
+  const { mode, paths } = options;
   const isDev = mode === "development";
   return {
     mode: mode ?? "development",
