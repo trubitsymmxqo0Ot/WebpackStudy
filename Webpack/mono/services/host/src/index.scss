@@ -1,0 +1,36 @@
+body {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+* {
+  color: #fff;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+input,
+button,
+textarea {
+  outline: 0;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #000;
+  &:focus {
+    outline: 0;
+    border: 0;
+  }
+}
+a {
+  color: #fff;
+  text-decoration: none;
+  &:disabled {
+    color: #fff;
+  }
+  &:hover {
+    color: #fff;
+  }
+}
