@@ -19,7 +19,7 @@ export function buildWebpack(options: EnvMode): webpack.Configuration {
     },
     resolve: buildResolve(options),
     plugins: buildPlugins(options),
-    devtool: isDev && "inline-source-map",
+    devtool: isDev ? "eval-cheap-module-source-map" : "eval",
     devServer: isDev ? buildDevServer(options) : undefined,
   };
 }

@@ -3,6 +3,13 @@ import * as styles from "./App.module.scss";
 import { Link } from "react-router-dom";
 import Alien from "@/assets/alien.svg";
 
+function fun1() {
+  fun2();
+}
+function fun2() {
+  throw new Error();
+}
+
 export default function App() {
   const [count, setCount] = useState(0);
   const increment = () => setCount((prev) => prev + 1);
@@ -32,6 +39,9 @@ export default function App() {
       <Alien className={styles.img} />
       <button onClick={increment} className={styles.count}>
         {count}
+      </button>
+      <button className={styles.btn} onClick={() => fun1()}>
+        Button
       </button>
     </div>
   );
