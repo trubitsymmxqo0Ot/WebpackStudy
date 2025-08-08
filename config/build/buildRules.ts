@@ -2,8 +2,9 @@ import { EnvMode } from "./types/types";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import { ModuleOptions } from "webpack";
 import ReactRefreshTypeScript from "react-refresh-typescript";
-export function buildRules({ mode }: EnvMode): ModuleOptions["rules"] {
-  const isDev = mode === "development";
+import { babelBuildConfig } from "./babel/babelBuildConfig";
+export function buildRules(options: EnvMode): ModuleOptions["rules"] {
+  const isDev = options.mode === "development";
 
   const tsxLoader = {
     test: /\.tsx?$/,
@@ -55,25 +56,7 @@ export function buildRules({ mode }: EnvMode): ModuleOptions["rules"] {
       },
     ],
   };
-  const babelLoader = {
-    test: /\.tsx?$/,
-    exclude: /node_modules/,
-    use: {
-      loader: "babel-loader",
-      options: {
-        presets: [
-          "@babel/preset-env",
-          "@babel/preset-typescript",
-          [
-            "@babel/preset-react",
-            {
-              runtime: "automatic",
-            },
-          ],
-        ],
-      },
-    },
-  };
+  const babelLoader = babelBuildConfig(options);
   const cssLoader = {
     test: /\.s[ac]ss$/i,
     use: [

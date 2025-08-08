@@ -14,9 +14,13 @@ export default function App() {
     isPlatform = <div>this is some admin panel</div>;
   }
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapper} data-testid={"App.DataTestId"}>
       <div className={styles.links}>
-        <Link className={styles.link} to="/shop">
+        <Link
+          className={styles.link}
+          to="/shop"
+          data-testid={"Platform.DataTestId"}
+        >
           Shop
         </Link>
         <Link className={styles.link} to="/admin">
