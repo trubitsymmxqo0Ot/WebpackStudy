@@ -55,6 +55,25 @@ export function buildRules({ mode }: EnvMode): ModuleOptions["rules"] {
       },
     ],
   };
+  const babelLoader = {
+    test: /\.tsx?$/,
+    exclude: /node_modules/,
+    use: {
+      loader: "babel-loader",
+      options: {
+        presets: [
+          "@babel/preset-env",
+          "@babel/preset-typescript",
+          [
+            "@babel/preset-react",
+            {
+              runtime: "automatic",
+            },
+          ],
+        ],
+      },
+    },
+  };
   const cssLoader = {
     test: /\.s[ac]ss$/i,
     use: [
@@ -63,5 +82,5 @@ export function buildRules({ mode }: EnvMode): ModuleOptions["rules"] {
       "sass-loader",
     ],
   };
-  return [tsxLoader, cssLoader, imageLoader, svgrLoader];
+  return [/*tsxLoader*/ babelLoader, cssLoader, imageLoader, svgrLoader];
 }
