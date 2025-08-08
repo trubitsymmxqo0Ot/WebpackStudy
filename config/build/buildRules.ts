@@ -1,13 +1,24 @@
 import { EnvMode } from "./types/types";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import { ModuleOptions } from "webpack";
+import ReactRefreshTypeScript from "react-refresh-typescript";
 export function buildRules({ mode }: EnvMode): ModuleOptions["rules"] {
   const isDev = mode === "development";
 
   const tsxLoader = {
     test: /\.tsx?$/,
-    use: "ts-loader", //*Используем в качетсве обработчика
     exclude: /node_modules/, //*Это мы не обрабатываем
+    use: [
+      {
+        loader: require.resolve("ts-loader"),
+        options: {
+          getCustomTransformers: () => ({
+            before: [isDev && ReactRefreshTypeScript()].filter(Boolean),
+          }),
+          transpileOnly: isDev,
+        },
+      },
+    ], //*Используем в качетсве обработчика
   };
 
   const modulesLoader = {

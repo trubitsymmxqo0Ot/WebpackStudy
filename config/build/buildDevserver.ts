@@ -5,5 +5,6 @@ export function buildDevServer({ port }: EnvMode): Configuration {
     open: true,
     port: port ?? 3000,
     historyApiFallback: true,
+    hot: true,
   };
 }

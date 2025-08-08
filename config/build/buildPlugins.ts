@@ -2,6 +2,7 @@ import { EnvMode } from "./types/types";
 import HTMLWebpackPlugin from "html-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
+import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
 import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 import webpack, { Configuration, DefinePlugin } from "webpack";
 
@@ -22,15 +23,16 @@ export function buildPlugins({
     new DefinePlugin({
       __PLATFORM__: JSON.stringify(platform),
     }),
-  ];
+  ].filter(Boolean);
   if (isDev) {
     //?Замедляет сборку, в проде не используем
     plugins.push(
       new webpack.ProgressPlugin({
         activeModules: true,
-      })
+      }),
+      new ForkTsCheckerWebpackPlugin(),
+      new ReactRefreshWebpackPlugin()
     );
-    plugins.push(new ForkTsCheckerWebpackPlugin());
   }
   if (isProd) {
     plugins.push(
