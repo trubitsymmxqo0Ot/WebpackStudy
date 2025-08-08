@@ -3,6 +3,7 @@ export type CustomPath = {
   html: string;
   output: string;
   src: string;
+  public: string;
 };
 
 export type Mode = "production" | "development";
