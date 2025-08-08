@@ -1,6 +1,7 @@
 import { EnvMode } from "./types/types";
 import HTMLWebpackPlugin from "html-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 import webpack, { Configuration, DefinePlugin } from "webpack";
 
@@ -29,6 +30,7 @@ export function buildPlugins({
         activeModules: true,
       })
     );
+    plugins.push(new ForkTsCheckerWebpackPlugin());
   }
   if (isProd) {
     plugins.push(
