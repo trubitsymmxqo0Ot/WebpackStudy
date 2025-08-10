@@ -2,13 +2,8 @@ import { useState } from "react";
 import * as styles from "./App.module.scss";
 import { Link, Outlet } from "react-router-dom";
 import Alien from "@/assets/alien.svg";
-
-function fun1() {
-  fun2();
-}
-function fun2() {
-  throw new Error();
-}
+import { adminRoutes } from "@packages/shared/src/routes/admin";
+import { shopRoutes } from "@packages/shared/src/routes/shop";
 
 export default function App() {
   const [count, setCount] = useState(0);
@@ -21,12 +16,12 @@ export default function App() {
     isPlatform = <div>this is some admin panel</div>;
   }
   return (
-    <div className={styles.wrapper} data-testid={"App.DataTestId"}>
+    <div className={styles.wrapper}>
       <div className={styles.links}>
-        <Link className={styles.link} to={"/shop"}>
+        <Link className={styles.link} to={shopRoutes.index}>
           Shop
         </Link>
-        <Link className={styles.link} to={"/admin"}>
+        <Link className={styles.link} to={adminRoutes.index}>
           Admin
         </Link>
       </div>
@@ -35,9 +30,6 @@ export default function App() {
       <Alien className={styles.img} />
       <button onClick={increment} className={styles.count}>
         {count}
-      </button>
-      <button className={styles.btn} onClick={() => fun1()}>
-        Button
       </button>
       <Outlet />
     </div>

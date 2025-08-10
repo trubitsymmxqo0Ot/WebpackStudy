@@ -22,6 +22,7 @@ export function buildPlugins({
     new HTMLWebpackPlugin({
       template: paths.html,
       favicon: path.resolve(paths.public, "favicon.ico"),
+      publicPath: "/",
     }),
     new DefinePlugin({
       __PLATFORM__: JSON.stringify(platform),
