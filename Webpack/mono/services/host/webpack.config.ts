@@ -1,6 +1,7 @@
 import path from "path";
 import webpack from "webpack";
 import { buildWebpack, CustomPath, EnvMode } from "@packages/build-config";
+import packageJson from "./package.json";
 
 module.exports = (env: EnvMode) => {
   const paths: CustomPath = {
@@ -17,5 +18,34 @@ module.exports = (env: EnvMode) => {
     analyzer: env.analyzer,
     platform: env.platform ?? "desktop",
   });
+
+  const SHOP_REMOTE_URL = env.SHOP_REMOTE_URL ?? "http://localhost:3005";
+  const ADMIN_REMOTE_URL = env.ADMIN_REMOTE_URL ?? "http://localhost:3006";
+
+  config.plugins.push(
+    new webpack.container.ModuleFederationPlugin({
+      name: "host",
+      filename: "remoteEntry.js",
+      remotes: {
+        shop: `shop@${SHOP_REMOTE_URL}/remoteEntry.js`,
+        admin: `admin@${ADMIN_REMOTE_URL}/remoteEntry.js`,
+      },
+      shared: {
+        ...packageJson.dependencies,
+        react: {
+          eager: true,
+          requiredVersion: packageJson.dependencies["react"],
+        },
+        "react-router-dom": {
+          eager: true,
+          requiredVersion: packageJson.dependencies["react-router-dom"],
+        },
+        "react-dom": {
+          eager: true,
+          requiredVersion: packageJson.dependencies["react-dom"],
+        },
+      },
+    })
+  );
   return config;
 };

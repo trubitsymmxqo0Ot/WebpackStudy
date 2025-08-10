@@ -15,4 +15,6 @@ export type EnvMode = {
   port?: number;
   analyzer?: boolean;
   platform?: Platform;
+  SHOP_REMOTE_URL?: string;
+  ADMIN_REMOTE_URL?: string;
 };

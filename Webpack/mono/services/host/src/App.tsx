@@ -1,6 +1,6 @@
 import { useState } from "react";
 import * as styles from "./App.module.scss";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import Alien from "@/assets/alien.svg";
 
 function fun1() {
@@ -23,14 +23,10 @@ export default function App() {
   return (
     <div className={styles.wrapper} data-testid={"App.DataTestId"}>
       <div className={styles.links}>
-        <Link
-          className={styles.link}
-          to="/shop"
-          data-testid={"Platform.DataTestId"}
-        >
+        <Link className={styles.link} to={"/shop"}>
           Shop
         </Link>
-        <Link className={styles.link} to="/admin">
+        <Link className={styles.link} to={"/admin"}>
           Admin
         </Link>
       </div>
@@ -43,6 +39,7 @@ export default function App() {
       <button className={styles.btn} onClick={() => fun1()}>
         Button
       </button>
+      <Outlet />
     </div>
   );
 }

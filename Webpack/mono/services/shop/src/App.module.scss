@@ -1,0 +1,77 @@
+.wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.title {
+  font-size: 38px;
+  text-align: center;
+  margin: 0 0 25px 0;
+}
+.count {
+  cursor: pointer;
+  font-size: 22px;
+  display: block;
+  width: 250px;
+  margin: 0 auto 30px;
+  padding: 15px 0;
+  border-radius: 35px;
+  &:active {
+    color: red;
+  }
+}
+
+.links {
+  border: 1px solid #fff;
+  padding: 35px 5px;
+  margin: 0 0 15px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  border-radius: 35px;
+}
+.link {
+  color: #000;
+  background-color: #fff;
+  font-size: 18px;
+  display: block;
+  padding: 10px 15px;
+  border-radius: 10px;
+  &:hover {
+    color: blue;
+  }
+}
+
+.img {
+  width: 120px;
+  height: 120px;
+  display: block;
+  margin: 0 auto 40px;
+  color: red;
+}
+.subtitle {
+  font-size: 42px;
+  margin: 0 0 5px 0;
+  text-align: center;
+}
+
+.btn {
+  font-size: 18px;
+  display: block;
+  padding: 10px 15px;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 250px;
+  margin: 0 auto;
+  cursor: pointer;
+  transition: 600ms ease 0s all;
+  &:hover {
+    background-color: #fff;
+    color: #000;
+  }
+}
+.span {
+  font-size: 22px;
+  font-weight: bold;
+  color: red;
+}

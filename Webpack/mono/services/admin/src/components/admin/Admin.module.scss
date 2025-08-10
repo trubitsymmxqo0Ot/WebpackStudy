@@ -1,0 +1,36 @@
+.title {
+  font-size: 160px;
+  text-align: center;
+  margin: 0 0 10px 0;
+}
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+.link {
+  text-align: center;
+  display: block;
+  padding: 20px 40px;
+  background-color: #fff;
+  color: #000;
+  font-size: 18px;
+  border-radius: 20px;
+  max-width: 250px;
+  transition: 500ms ease 0s all;
+  &:hover {
+    color: blue;
+    padding: 20px 60px;
+  }
+}
+
+.image {
+  display: block;
+  margin: 0 0 70px 0;
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+}
